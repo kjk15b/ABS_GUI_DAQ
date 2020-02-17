@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, http-equiv=refresh"/>
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+/* Center the images */
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+#Home {background-color: red;}
+#Camera {background-color: green;}
+#Temperature {background-color: blue;}
+#Nitrate {background-color: orange;}
+#Ammonium {background-color: gray;}
+#Conductivity {background-color: purple;}
+#PH {background-color: lightblue;}
+#Turbidity {background-color: tan;}
+#Longitude {background-color: lightgreen;}
+#Latitude {background-color: violet;}
+#Oxygen {background-color: silver;}
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
+<button class="tablink" onclick="openPage('Camera', this, 'green')" id="defaultOpen">Camera</button>
+<button class="tablink" onclick="openPage('Temperature', this, 'blue')">Temperature</button>
+<button class="tablink" onclick="openPage('Conductivity', this, 'purple')">Conductivity</button>
+<button class="tablink" onclick="openPage('Nitrate', this, 'orange')">Nitrate</button>
+<button class="tablink" onclick="openPage('Ammonium', this, 'gray')">Ammonium</button>
+<button class="tablink" onclick="openPage('Oxygen', this, 'silver')">Oxygen</button>
+<button class="tablink" onclick="openPage('Turbidity', this, 'tan')">Turbidity</button>
+<button class="tablink" onclick="openPage('PH', this, 'lightblue')">pH</button>
+<button class="tablink" onclick="openPage('Latitude', this, 'violet')">Latitude</button>
+<button class="tablink" onclick="openPage('Longitude', this, 'lightgreen')">Longitude</button>
+
+
+<div id="Home" class="tabcontent">
+  <h3><br><br><br>Home</h3>
+  <p>Abilene Buoy Systems Apache2 Web Server!</p>
+</div>
+
+<div id="Camera" class="tabcontent">
+  <h3><br><br><br>Camera</h3>
+  <p>Camera image.<br><br><br></p> 
+  <img alt="lake.jpg" src="lake.jpg" class="center">
+</div>
+
+<div id="Temperature" class="tabcontent">
+  <h3><br><br><br>Temperature</h3>
+  <p>Temperature of the water.<br><br><br></p>
+  <p align="center" id="water_temp"> test </p>
+  <img alt="Water Temperature.png" src="Water Temperature.png" class="center">
+</div>
+
+<div id="Conductivity" class="tabcontent">
+  <h3><br><br><br>Conductivity</h3>
+  <p>Conductivity of the water.<br><br><br></p>
+  <p align="center" id="conductivity"> test </p>
+  <img alt="Conductivity.png" src="Conductivity.png" class="center">
+</div>
+
+<div id="Nitrate" class="tabcontent">
+  <h3><br><br><br>Nitrate</h3>
+  <p>Nitrate content in the water.<br><br><br></p>
+  <p align="center" id="nitrate"> test </p>
+  <img alt="Nitrate Content.png" src="Nitrate Content.png" class="center">
+</div>
+
+<div id="Ammonium" class="tabcontent">
+  <h3><br><br><br>Ammonium</h3>
+  <p>Ammonium content in the water.<br><br><br></p>
+  <p align="center" id="ammonium"> test </p>
+  <img alt="Ammonium Content.png" src="Ammonium Content.png" class="center">
+</div>
+
+<div id="Oxygen" class="tabcontent">
+  <h3><br><br><br>Oxygen</h3>
+  <p>Oxygen content in the water.<br><br><br></p>
+  <p align="center" id="oxygen"> test </p>
+  <img alt="Oxygen Content.png" src="Oxygen Content.png" class="center">
+</div>
+
+<div id="Turbidity" class="tabcontent">
+  <h3><br><br><br>Turbidity</h3>
+  <p>Turbidity content of the water.<br><br><br></p>
+  <p align="center" id="turbidity"> test </p>
+  <img alt="Turbidity.png" src="Turbidity.png" class="center">
+</div>
+
+<div id="PH" class="tabcontent">
+  <h3><br><br><br>pH</h3>
+  <p>pH content of the water.<br><br><br></p>
+  <p align="center" id="ph"> test </p>
+  <img alt="pH Level.png" src="pH Level.png" class="center">
+</div>
+
+<div id="Latitude" class="tabcontent">
+  <h3><br><br><br>Latitude</h3>
+  <p>Latitude of the buoy.<br><br><br></p>
+  <p align="center" id="latitude"> test </p>
+  <img alt="Latitude.png" src="Latitude.png" class="center">
+</div>
+
+<div id="Longitude" class="tabcontent">
+  <h3><br><br><br>Longitude</h3>
+  <p>Longitude of the buoy.<br><br><br></p>
+  <p align="center" id="longitude"> test </p>
+  <img alt="Longitude.png" src="Longitude.png" class="center">
+</div>
+
+
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "black";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor =  color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 
